@@ -17,20 +17,22 @@ class Board extends React.Component {
   }
 
   render() {
-    let eles = [];
-    for(let i = 0; i<3;i++){
-      let temprow = [];
-      for(let v=0;v<3;v++){
-        temprow.push(this.renderSquare(i+v)) 
-      }
-      eles.push(React.createElement("div",{className:"board-row"},temprow))
-    }
-
-    console.log('eles',eles);
-
     return /*#__PURE__*/(
       React.createElement("div", null, /*#__PURE__*/
-      [eles]));
+      React.createElement("div", { className: "board-row" },
+      this.renderSquare(0),
+      this.renderSquare(1),
+      this.renderSquare(2)), /*#__PURE__*/
+
+      React.createElement("div", { className: "board-row" },
+      this.renderSquare(3),
+      this.renderSquare(4),
+      this.renderSquare(5)), /*#__PURE__*/
+
+      React.createElement("div", { className: "board-row" },
+      this.renderSquare(6),
+      this.renderSquare(7),
+      this.renderSquare(8))));
 
 
 
@@ -106,7 +108,7 @@ class Game extends React.Component {
 
       return /*#__PURE__*/(
         React.createElement("li", { key: move ,className:highLight }, /*#__PURE__*/
-        React.createElement("button", { onClick: () => this.jumpTo(move) }, desc )));
+        React.createElement("button", {key:"btn_"+move, onClick: () => this.jumpTo(move) }, desc )));
 
 
     });
